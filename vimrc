@@ -7,6 +7,9 @@
 "    -> General
 "    -> User Interface
 "    -> Colors and Fonts
+"    -> Files, backups and undo
+"    -> Text, tab and indent related
+"    -> Travelsal
 "
 
 
@@ -91,6 +94,10 @@ nnoremap <D-down> :resize +5<cr>
 nnoremap <D-up> :resize -5<cr>
 nnoremap <D-right> :vertical resize +5<cr>
 
+" 10. Set split window
+set splitright
+set splitbelow
+au VimResized * :wincmd =
 
 " Colors and Fonts
 " 1. Turn on syntax Highlight
@@ -123,6 +130,9 @@ set nobackup
 set noswapfile
 set nowb
 
+" 2. Set encoding 
+set encoding=utf-8
+
 
 " Text, tab and indent related
 
@@ -138,6 +148,13 @@ set linebreak
 " 3. Indent related
 set autoindent
 set smartindent
+
+" Travelsal
+" Automatically move into current dir.
+autocmd BufEnter * silent! lcd %:p:h
+
+"Do the same thing
+map <leader>cd :%lcd %:p:h<cr>
 
 " Misc
 " 1. Remove the Windows ^M - when the encodings gets messed up
